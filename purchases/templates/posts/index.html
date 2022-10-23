@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for post in posts %}
+<img src="{{ post.image.url }}}" width="500">
+<h2>{{ post.title }}</h2>
+<h3>Цена: {{ post.price }}р</h3>
+<h5><a href="{% url 'detail' post.pk %}">Подробнее</a></h5>
+{% endfor %}
+{% endblock %}
