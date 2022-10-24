@@ -19,3 +19,17 @@ class Posts(models.Model):
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
+
+class Comment(models.Model):
+    post = models.ForeignKey('Posts', on_delete = models.CASCADE)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Пользователь')
+    comment = models.TextField()
+    time_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.comment
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+

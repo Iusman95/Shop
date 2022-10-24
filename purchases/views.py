@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
-from purchases.models import Posts
+from django.views.generic import ListView, DetailView, CreateView
+from purchases.models import Posts, Comment
+from purchases.forms import CommentForm
 
 
 class PostListView(ListView):
@@ -20,4 +21,11 @@ class PostDetailView(DetailView): # Подробная информация о �
     model = Posts 
     template_name = 'posts/detail.html'
     context_object_name = 'post'
+
+
+class PostCommentView(CreateView):
+    model = Comment
+    template_name = 'posts/detail.html'
+    context_object_name = 'comments'  
+    forms = CommentForm
     
